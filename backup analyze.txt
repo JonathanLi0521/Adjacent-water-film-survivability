@@ -1,0 +1,37 @@
+prompt1 = '1st x-coord: ';
+prompt2 = '1st y-coord: ';
+prompt3 = '2nd x-coord: ';
+prompt4 = '2nd y-coord: ';
+prompt5 = 'how many exps: ';
+
+x1 = input(prompt1)
+y1 = input(prompt2)
+x2 = input(prompt3)
+y2 = input(prompt4)
+
+
+info_matrix.first = [1 5 2 3; 2 4 3 1; 3 3 2 2; 2 6 2 1];
+info_matrix.second = [1 4 1 2; 3 3 4 2; 4 5 1 1; 1 7 3 2];
+info_matrix.third = [2 5 4 1; 3 5 2 2; 3 6 5 2; 1 4 5 4];
+info_matrix.fourth = [3 6 4 2; 1 5 4 1; 2 7 6 1; 5 4 2 2];
+info_matrix_sum= info_matrix.first+info_matrix.second+info_matrix.third+info_matrix.fourth;
+info_matrix_avg= info_matrix_sum/4
+a= [info_matrix.first(x1, y1), info_matrix.second(x1, y1), info_matrix.third(x1, y1), info_matrix.fourth(x1, y1)]
+b= [info_matrix.first(x2, y2), info_matrix.second(x2, y2), info_matrix.third(x2, y2), info_matrix.fourth(x2, y2)]
+
+a_dif= [info_matrix.first(x1, y1)-info_matrix_avg(x1, y1), info_matrix.second(x1, y1)-info_matrix_avg(x1, y1), info_matrix.third(x1, y1)-info_matrix_avg(x1, y1), info_matrix.fourth(x1, y1)-info_matrix_avg(x1, y1)]
+b_dif= [info_matrix.first(x2, y2)-info_matrix_avg(x2, y2), info_matrix.second(x2, y2)-info_matrix_avg(x2, y2), info_matrix.third(x2, y2)-info_matrix_avg(x2, y2), info_matrix.fourth(x2, y2)-info_matrix_avg(x2, y2)]
+
+subplot(1, 2, 1)
+scatter(a_dif, b_dif)
+r_dif = corrcoef(a_dif, b_dif);
+R_dif = r_dif(1,2)
+
+
+subplot(1, 2, 2)
+scatter(a,b)
+r = corrcoef(a, b);
+R = r(1,2)
+
+
+
